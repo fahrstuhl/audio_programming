@@ -92,14 +92,14 @@ x.free;
 (
     SynthDef("tutorial-DecayPink", { |outBus = 0, effectBus, direct=0.5|
         var source;
-        source = Decay2.ar(Impulse.ar(1,0.25), 0.01, 0.2, PinkNoise.ar);
+        source = Decay2.ar(Impulse.ar(2,0.25), 0.01, 0.2, PinkNoise.ar);
         Out.ar(outBus, source*direct);
         Out.ar(effectBus, source*(1-direct));
     }).add;
 
     SynthDef("tutorial-DecaySin", { |outBus=0, effectBus, direct=0.5|
         var source;
-        source = Decay2.ar(Impulse.ar(0.3,0.25), 0.3, 1, SinOsc.ar(SinOsc.kr(0.2,0,110,440)));
+        source = Decay2.ar(Impulse.ar(0.1,0.25), 0.3, 1, SinOsc.ar(SinOsc.kr(0.2,0,110,440)));
         Out.ar(outBus, source * direct);
         Out.ar(effectBus, source * (1-direct));
     }).add;
@@ -119,8 +119,8 @@ x.free;
     z = Synth.before(x, "tutorial-DecaySin", [\effectBus, b, \outBus, 1]);
 )
 
-y.set(\direct, 0);
-z.set(\direct, 0);
+y.set(\direct, 0.2);
+z.set(\direct, 0.1);
 
 x.free; y.free; z.free; b.free;
 
@@ -371,7 +371,7 @@ p.stop;
 
     p = Pbind(
         \instrument, \harpsi,
-        \degree, Pseries(0,1,8),
+        \degree, Pseries(0,5,8),
         \dur, 0.25,
         \gate, Pseries(0,0.025,8)
     ).play;
