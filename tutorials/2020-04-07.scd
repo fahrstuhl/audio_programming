@@ -1,6 +1,6 @@
 s.boot;
-(
 Server.default.record;
+(
 // trying to replicate the bass from https://music.tutsplus.com/tutorials/programming-essential-subtractive-synth-patches--audio-8962
 SynthDef(\bass, { |out, freq = 440, gate = 1, amp = 0.1|
     var wv1, wv2, filter, env, sig;
